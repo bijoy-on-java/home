@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
  * My app login controller. This class will get called when a user logged in/ out of the
  * application.
  *
- * Date: January 26, 2022 10:53 am
+ * Date: Thursday January 26, 2022 10:53 am
  * Location: QLD, AU
  * Author: Bijoy Baral
  * email: bijoy.on.java@gmail.com
