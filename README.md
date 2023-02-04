@@ -9,7 +9,7 @@ Place: Chatsworth, QLD, AU<br/>
 Cell: +61 468 373 528<br/>
 Email: bijoy.on.java@gmail.com<br/>
 
-**Technology used**<br/>
+**Technology/Framework used**<br/>
 1. Java 12
 2. Spring boot REST API
 3. Lombok
@@ -17,6 +17,7 @@ Email: bijoy.on.java@gmail.com<br/>
 5. Jenkins
 6. Homebrew tool manager
 7. Focalboard project management tool
+8. MySQl database
 
 **URL's FYI**<br/>
 Endpoints: http://localhost:1010/swagger-ui.html <br/>
