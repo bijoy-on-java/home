@@ -20,8 +20,10 @@ Email: bijoy.on.java@gmail.com<br/>
 8. MySQl database
 
 **URL's FYI**<br/>
-Endpoints: http://localhost:1010/swagger-ui.html <br/>
+Swagger: http://localhost:1010/swagger-ui.html <br/>
 Jenkins: http://localhost:8080/login?from=%2F <br/>
+React JS: http://localhost:3000/ <br/>
+End points Base: http://localhost:8080/ <br/>
 
 **Tool commands**<br/>
 _Jenkins_

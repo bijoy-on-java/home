@@ -3,16 +3,14 @@ package com.bijoy.home.controller;
 import com.bijoy.home.entity.LoginUser;
 import com.bijoy.home.repository.LoginRepository;
 import com.bijoy.home.request.LoginInputRequest;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,6 +25,7 @@ import java.util.List;
  * cell: +61 468 373 528
  */
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/login")
 public class LoginController {
@@ -49,5 +48,12 @@ public class LoginController {
         }
         List<LoginUser> allUser = loginRepository.findAll();
         return new ResponseEntity<>("Hooray Successfully logged in!", HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/users")
+    public List<LoginUser> getUsers() {
+        LOGGER.info("Inside LoginController.getUsers method");
+        List<LoginUser> allUser = loginRepository.findAll();
+        return allUser;
     }
 }
