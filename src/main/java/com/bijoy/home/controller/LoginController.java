@@ -1,5 +1,7 @@
 package com.bijoy.home.controller;
 
+import com.bijoy.home.entity.LoginUser;
+import com.bijoy.home.repository.LoginRepository;
 import com.bijoy.home.request.LoginInputRequest;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
@@ -11,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * My app login controller. This class will get called when a user logged in/ out of the
@@ -32,6 +36,9 @@ public class LoginController {
     @Autowired
     private ObjectMapper loginObjectMapper;
 
+    @Autowired
+    private LoginRepository loginRepository;
+
     @PostMapping(path = "/app", consumes = "application/json", produces = "application/json")
     public ResponseEntity<String> appLogin(@RequestBody LoginInputRequest loginInputRequest) {
         LOGGER.info("Inside LoginController.appLogin method");
@@ -40,7 +47,7 @@ public class LoginController {
         } else if (loginInputRequest.getPassword() == null) {
             return new ResponseEntity<>("Password cannot be blank", HttpStatus.BAD_REQUEST);
         }
+        List<LoginUser> allUser = loginRepository.findAll();
         return new ResponseEntity<>("Hooray Successfully logged in!", HttpStatus.OK);
     }
-
 }
