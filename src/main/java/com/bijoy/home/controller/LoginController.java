@@ -3,8 +3,10 @@ package com.bijoy.home.controller;
 import com.bijoy.home.entity.LoginUser;
 import com.bijoy.home.repository.LoginRepository;
 import com.bijoy.home.request.LoginInputRequest;
+import com.bijoy.home.validator.LoginValidator;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,12 +41,11 @@ public class LoginController {
     private LoginRepository loginRepository;
 
     @PostMapping(path = "/app", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<String> appLogin(@RequestBody LoginInputRequest loginInputRequest) {
+    public ResponseEntity<String> appLogin(@RequestBody LoginInputRequest loginInputRequest) throws JsonProcessingException {
         LOGGER.info("Inside LoginController.appLogin method");
-        if(loginInputRequest.getUserName() == null) {
-            return new ResponseEntity<>("Username cannot be blank", HttpStatus.BAD_REQUEST);
-        } else if (loginInputRequest.getPassword() == null) {
-            return new ResponseEntity<>("Password cannot be blank", HttpStatus.BAD_REQUEST);
+        String inputValidationResponse = LoginValidator.validateLoginInput(loginInputRequest);
+        if(StringUtils.isNotBlank(inputValidationResponse)) {
+            return new ResponseEntity<>(loginObjectMapper.writeValueAsString(inputValidationResponse), HttpStatus.BAD_REQUEST);
         }
         List<LoginUser> allUser = loginRepository.findAll();
         return new ResponseEntity<>("Hooray Successfully logged in!", HttpStatus.OK);
