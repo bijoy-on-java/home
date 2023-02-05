@@ -23,9 +23,9 @@ public class LoginValidator {
      * @return String
      */
     public static String validateLoginInput(LoginInputRequest loginInputRequest) {
-        if (StringUtils.isNotBlank(loginInputRequest.getUserName())) {
+        if (StringUtils.isBlank(loginInputRequest.getUserName())) {
             return USERNAME_CANNOT_BE_BLANK;
-        } else if (StringUtils.isNotBlank(loginInputRequest.getPassword())) {
+        } else if (StringUtils.isBlank(loginInputRequest.getPassword())) {
             return PASSWORD_CANNOT_BE_BLANK;
         }
         return null;
