@@ -5,7 +5,17 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 
-public class SavingInputRequet extends Request {
+/**
+ * Money savings request POJO
+ *
+ * Date: Tuesday February 07, 2023 10:49 pm
+ * Location: QLD, AU
+ * Author: Bijoy Baral
+ * email: bijoy.on.java@gmail.com
+ * cell: +61 468 373 528
+ */
+
+public class SavingInputRequest extends Request {
 
     @Getter
     @Setter
@@ -35,12 +45,12 @@ public class SavingInputRequet extends Request {
     @Setter
     private BigDecimal careSuperNetAmount;
 
-    public SavingInputRequet() {
+    public SavingInputRequest() {
         //Avoid instantiation
     }
 
-    public SavingInputRequet(BigDecimal iciciBankNetAmount, BigDecimal hdfcBankNetAmount, BigDecimal axisBankNetAmount, BigDecimal sbiBankNetAmount, BigDecimal licInsuranceAmount,
-                             BigDecimal commBankNetAmount, BigDecimal nabBankNetAmount, BigDecimal westpacBankNetAmount, BigDecimal careSuperNetAmount) {
+    public SavingInputRequest(BigDecimal iciciBankNetAmount, BigDecimal hdfcBankNetAmount, BigDecimal axisBankNetAmount, BigDecimal sbiBankNetAmount, BigDecimal licInsuranceAmount,
+                              BigDecimal commBankNetAmount, BigDecimal nabBankNetAmount, BigDecimal westpacBankNetAmount, BigDecimal careSuperNetAmount) {
         this.iciciBankNetAmount = iciciBankNetAmount;
         this.hdfcBankNetAmount = hdfcBankNetAmount;
         this.axisBankNetAmount = axisBankNetAmount;

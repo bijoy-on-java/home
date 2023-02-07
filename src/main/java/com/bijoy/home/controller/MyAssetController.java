@@ -1,6 +1,6 @@
 package com.bijoy.home.controller;
 
-import com.bijoy.home.request.SavingInputRequet;
+import com.bijoy.home.request.SavingInputRequest;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
@@ -35,23 +35,23 @@ public class MyAssetController {
     @Autowired
     private ObjectMapper myAssetControllerObjectMapper;
     @PostMapping(path = "/calculate/net", produces = "application/json", consumes = "application/json")
-    public ResponseEntity<String> calculateTotalAsset(@RequestBody SavingInputRequet savingInputRequet) throws JsonProcessingException {
+    public ResponseEntity<String> calculateTotalAsset(@RequestBody SavingInputRequest savingInputRequest) throws JsonProcessingException {
         LOGGER.info("Inside MyAssetController.calculateTotalAsset method.");
-        if(savingInputRequet.getIciciBankNetAmount() == BigDecimal.ZERO || savingInputRequet.getHdfcBankNetAmount() == BigDecimal.ZERO || savingInputRequet.getAxisBankNetAmount() == BigDecimal.ZERO ||
-        savingInputRequet.getSbiBankNetAmount() == BigDecimal.ZERO || savingInputRequet.getLicInsuranceAmount() == BigDecimal.ZERO || savingInputRequet.getCommBankNetAmount() == BigDecimal.ZERO ||
-        savingInputRequet.getNabBankNetAmount() == BigDecimal.ZERO || savingInputRequet.getWestpacBankNetAmount() == BigDecimal.ZERO || savingInputRequet.getCareSuperNetAmount() == BigDecimal.ZERO) {
+        if(savingInputRequest.getIciciBankNetAmount() == BigDecimal.ZERO || savingInputRequest.getHdfcBankNetAmount() == BigDecimal.ZERO || savingInputRequest.getAxisBankNetAmount() == BigDecimal.ZERO ||
+        savingInputRequest.getSbiBankNetAmount() == BigDecimal.ZERO || savingInputRequest.getLicInsuranceAmount() == BigDecimal.ZERO || savingInputRequest.getCommBankNetAmount() == BigDecimal.ZERO ||
+        savingInputRequest.getNabBankNetAmount() == BigDecimal.ZERO || savingInputRequest.getWestpacBankNetAmount() == BigDecimal.ZERO || savingInputRequest.getCareSuperNetAmount() == BigDecimal.ZERO) {
          return new ResponseEntity<>("Please provide net savings for each account", HttpStatus.BAD_REQUEST);
         }
         List<BigDecimal> netAssetList = new ArrayList<>();
-        netAssetList.add(savingInputRequet.getIciciBankNetAmount());
-        netAssetList.add(savingInputRequet.getHdfcBankNetAmount());
-        netAssetList.add(savingInputRequet.getAxisBankNetAmount());
-        netAssetList.add(savingInputRequet.getSbiBankNetAmount());
-        netAssetList.add(savingInputRequet.getLicInsuranceAmount());
-        netAssetList.add(savingInputRequet.getCommBankNetAmount());
-        netAssetList.add(savingInputRequet.getNabBankNetAmount());
-        netAssetList.add(savingInputRequet.getWestpacBankNetAmount());
-        netAssetList.add(savingInputRequet.getCareSuperNetAmount());
+        netAssetList.add(savingInputRequest.getIciciBankNetAmount());
+        netAssetList.add(savingInputRequest.getHdfcBankNetAmount());
+        netAssetList.add(savingInputRequest.getAxisBankNetAmount());
+        netAssetList.add(savingInputRequest.getSbiBankNetAmount());
+        netAssetList.add(savingInputRequest.getLicInsuranceAmount());
+        netAssetList.add(savingInputRequest.getCommBankNetAmount());
+        netAssetList.add(savingInputRequest.getNabBankNetAmount());
+        netAssetList.add(savingInputRequest.getWestpacBankNetAmount());
+        netAssetList.add(savingInputRequest.getCareSuperNetAmount());
         return new ResponseEntity<>(myAssetControllerObjectMapper.writeValueAsString("Total Asset: " +netAssetList.stream().reduce(BigDecimal.ZERO, BigDecimal::add)), HttpStatus.OK);
     }
 

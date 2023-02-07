@@ -1,12 +1,11 @@
 package com.bijoy.home.repository;
 
 import com.bijoy.home.entity.LoginUser;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import com.bijoy.home.request.LoginInputRequest;
 
 /**
  * My app login Repository interface. This interface will get called when a user logged in/ out of the
- * application.
+ * application. It will make a call to database.
  *
  * Date: Tuesday February 07, 2023 10:49 pm
  * Location: QLD, AU
@@ -14,6 +13,6 @@ import org.springframework.stereotype.Repository;
  * email: bijoy.on.java@gmail.com
  * cell: +61 468 373 528
  */
-@Repository
-public interface LoginRepository extends JpaRepository<LoginUser, Integer>, CustomLoginRepository {
+public interface CustomLoginRepository {
+    LoginUser fetchLoginUser(LoginInputRequest loginInputRequest);
 }

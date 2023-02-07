@@ -3,13 +3,13 @@ package com.bijoy.home.validator;
 import com.bijoy.home.request.LoginInputRequest;
 import org.apache.commons.lang3.StringUtils;
 
-import static com.bijoy.home.constant.HomeAppConstant.PASSWORD_CANNOT_BE_BLANK;
-import static com.bijoy.home.constant.HomeAppConstant.USERNAME_CANNOT_BE_BLANK;
+import static com.bijoy.home.constant.HomeAppConstant.LoginConstant.PASSWORD_CANNOT_BE_BLANK;
+import static com.bijoy.home.constant.HomeAppConstant.LoginConstant.USERNAME_CANNOT_BE_BLANK;
 
 /**
  * My app login validator class responsible to validate input data before processing the request.
  *
- * Date: Sunday February 05, 2022 10:05 pm
+ * Date: Sunday February 05, 2023 10:05 pm
  * Location: QLD, AU
  * Author: Bijoy Baral
  * email: bijoy.on.java@gmail.com
