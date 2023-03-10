@@ -1,9 +1,12 @@
-HELP.md
+## Target ##
 target/
-.mvn/wrapper
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+## Maven ##
+.mvn/wrapper
+mvnw
+mvnw.cmd
 
 ### STS ###
 .apt_generated
